@@ -1,0 +1,19 @@
+
+name: jobscout-ai
+
+services:
+  jobscout:
+    build: .
+
+    env_file:
+      - .env
+
+    ports:
+      - "8084:8084"
+
+    restart: unless-stopped
+
+    init: true
+
+    security_opt:
+      - no-new-privileges:true

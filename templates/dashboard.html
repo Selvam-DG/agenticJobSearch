@@ -1,0 +1,146 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  />
+
+  <title>JobScout AI — My Profile</title>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', path='/css/app.css') }}"
+/>
+
+<script
+  src="{{ url_for('static', path='/js/app.js') }}"
+  defer
+></script>
+</head>
+
+<body>
+  <header>
+    <div class="shell">
+      <strong>JobScout AI</strong>
+
+      <span class="tag">
+        v{{ version }} · Profile foundation
+      </span>
+    </div>
+  </header>
+
+  <main class="shell">
+    <div class="intro">
+      <h1>My Job Search Profile</h1>
+
+      <p>
+        Save your target roles, skills and
+        preferred locations. Job monitoring
+        and AI matching arrive in later versions.
+      </p>
+    </div>
+
+    <section class="panel">
+      <form id="profile-form">
+
+        <div class="form-grid">
+          <label>
+            Display name
+            <input
+              id="display_name"
+              maxlength="120"
+              placeholder="e.g. Alex"
+            />
+          </label>
+
+          <label>
+            Current location
+            <input
+              id="current_location"
+              maxlength="160"
+              placeholder="Munich, Germany"
+            />
+          </label>
+
+          <label>
+            Years of experience
+            <input
+              id="years_experience"
+              type="number"
+              min="0"
+              max="60"
+              value="0"
+            />
+          </label>
+
+          <label>
+            Preferred work mode
+            <select id="work_mode">
+              <option value="any">Any</option>
+              <option value="remote">Remote</option>
+              <option value="hybrid">Hybrid</option>
+              <option value="onsite">On-site</option>
+            </select>
+          </label>
+        </div>
+
+        <label>
+          Target roles
+          <small>One role per line</small>
+          <textarea
+            id="roles"
+            rows="4"
+            placeholder="Python Developer&#10;Backend Engineer"
+          ></textarea>
+        </label>
+
+        <label>
+          Skills
+          <small>
+            One skill per line. Add proficiency
+            after | if needed.
+          </small>
+          <textarea
+            id="skills"
+            rows="4"
+            placeholder="Python | advanced&#10;FastAPI | intermediate"
+          ></textarea>
+        </label>
+
+        <label>
+          Target cities and radius (km)
+          <small>
+            One per line: City | Radius
+          </small>
+          <textarea
+            id="locations"
+            rows="4"
+            placeholder="Munich | 30&#10;Berlin | 50"
+          ></textarea>
+        </label>
+
+        <div class="actions">
+          <button type="submit">
+            Save profile
+          </button>
+
+          <span
+            id="message"
+            role="status"
+            aria-live="polite"
+          ></span>
+        </div>
+      </form>
+    </section>
+
+    <p class="footnote">
+      Your profile is stored in PostgreSQL.
+      Access requires administrator credentials.
+    </p>
+  </main>
+</body>
+</html>
